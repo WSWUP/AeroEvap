@@ -6,8 +6,24 @@ Created on Thu Oct 22 14:13:07 2015
 Aerodynmaic mass transfer code to calculate E, Ce, and VPD from buoy input parameters
 """
 
-def aero(datetime,wind,pressure,T_air,T_skin,RH, sensor_height, timestep):
-    "Esimates open water evaporation using the aerodynamica mass transfer approach"
+def aero(datetime, wind, pressure, T_air, T_skin, RH, sensor_height, timestep):
+    """
+    Estimates open water evaporation using the aerodynamic mass transfer approach.
+    
+    Arguments:
+        datetime (datetime.datetime or str): date-time of measurements for
+            error logging.
+        wind (float): windspeed in m/s
+        pressure (float): air pressure in kPa
+        T_air (float): air temperature in C
+        T_skin (float): skin temperature (water surface) in C
+        RH (float): relative humidity (0-100)
+        sensor_height (float): sensor height in m
+        timestep (int or float): measurement frequency in seconds
+
+    Returns:
+
+    """
 #Input Variable Units:
 #Wind: m/s
 #Pressure: mb
@@ -42,14 +58,14 @@ def aero(datetime,wind,pressure,T_air,T_skin,RH, sensor_height, timestep):
     import cmath
     import numpy as np
     import math as m
-    import sys as sys
-    check=np.array([datetime, wind, pressure, T_air, T_skin, RH, sensor_height, timestep])
+    check=np.array([wind, pressure, T_air, T_skin, RH, sensor_height, timestep])
     if np.isnan(check).any():
-       Ce=float('NaN')
-       E=float('NaN')
-       #print('Incomplete Dataset')
+        Ce=np.nan
+        E=np.nan
+        VPD=np.nan
+        print('One or more variables missing on {}'.format(datetime))
+        return E, Ce, VPD
        
-       sys.exit()
 
     ###########################################################
     #Constants
@@ -122,34 +138,40 @@ def aero(datetime,wind,pressure,T_air,T_skin,RH, sensor_height, timestep):
     #Monin-Obhukov Length
     L=(Tv*u_f**2)/(K*g*t_fv)
     
-    for x in range(0, 199):
-        #Friction Velocity of Momentum
-        u_f=(K*(wind-u_f))/(cmath.log(z/zo)-Sm)
-        #Scaling Potential Temperature
-        t_fv=(K*(T_air_pot-T_skin_pot))/(cmath.log(z/zot)-St)
-        #Scaling Humidity
-        q_f=(K*(q_air-q_sat))/(cmath.log(z/zoq)-Sq)
-        #Stability Function of Momentum
-        Sm=np.float64(-5.2*(z))/L
-        #Stability Function of Vapor
-        Sq=np.float64(-5.2*(z))/L
-        #Roughness Length of Momemtum
-        zc=a*u_f**2/g;
-        zs=0.11*v/u_f;
-        zo=zc+zs;
-        #Roughness Length of Vapor
-        zoq=7.4*zo*cmath.exp(-2.25*(zo*u_f/v)**.25)
-        #Monin-Obhukov Length
-        L=(Tv*u_f**2)/(K*g*t_fv);
+    try:
+        # avoid crash with bad values causing log of 0 or neg values
+        for x in range(0, 199):
+            #Friction Velocity of Momentum
+            u_f=(K*(wind-u_f))/(cmath.log(z/zo)-Sm)
+            #Scaling Potential Temperature
+            t_fv=(K*(T_air_pot-T_skin_pot))/(cmath.log(z/zot)-St)
+            #Scaling Humidity
+            q_f=(K*(q_air-q_sat))/(cmath.log(z/zoq)-Sq)
+            #Stability Function of Momentum
+            Sm=np.float64(-5.2*(z))/L
+            #Stability Function of Vapor
+            Sq=np.float64(-5.2*(z))/L
+            #Roughness Length of Momemtum
+            zc=a*u_f**2/g;
+            zs=0.11*v/u_f;
+            zo=zc+zs;
+            #Roughness Length of Vapor
+            zoq=7.4*zo*cmath.exp(-2.25*(zo*u_f/v)**.25)
+            #Monin-Obhukov Length
+            L=(Tv*u_f**2)/(K*g*t_fv);
+    except:
+        print('Could not converge on {}'.format(datetime))
+        return np.nan, np.nan, np.nan
+
     stability=z/L
-    #stability=z/L
+
     if ~np.isreal(L):
-        Ce_s=float('NaN')    
+        Ce_s=np.nan
     else:
         if np.real(stability)>0:
             Ce_s=np.real(K**2/((cmath.log(z/zo)-Sm)*(cmath.log(z/zoq)-Sq)))
         else:
-            Ce_s=float('NaN')  
+            Ce_s=np.nan
     ###############################################################
     #Unstable Conditions (z/L< 0)
     #Initial Values for Iteration
@@ -177,50 +199,61 @@ def aero(datetime,wind,pressure,T_air,T_skin,RH, sensor_height, timestep):
     #Monin-Obhukov Length
     L=(Tv*u_f**2)/(K*g*t_fv);
     
-    for x in range(0, 199):
-        #Friction Velocity of Momentum
-        u_f=(K*(wind-u_f))/(cmath.log(z/zo)-Sm)
-        #Scaling Temperature
-        t_fv=(K*(T_air_pot-T_skin_pot))/(cmath.log(z/zot)-St)
-        #Scaling Humidity
-        q_f=(K*(q_air-q_sat))/(cmath.log(z/zoq)-Sq)
-        #Input for Stability function calculations
-        x=(1-16*(z/L))**.25
-        #Stability Function of Momentum
-        Sm=2*cmath.log((1+x)/2)+cmath.log((1+x**2)/2)-2*cmath.atan(x)+(m.pi/2)
-        #Stability Function of Vapor
-        Sq=2*cmath.log((1+x**2)/2)
-        #Roughness Length of Momemtum
-        zc=a*u_f**2/g
-        zs=0.11*v/u_f
-        zo=zc+zs
-        #Roughness Length of Vapor
-        zoq=7.4*zo*cmath.exp(-2.25*(zo*u_f/v)**.25)
-        #Monin-Obhukov Length
-        L=(Tv*u_f**2)/(K*g*t_fv)
+    try:
+        # avoid crash with bad values causing log of 0 or neg values
+        for x in range(0, 199):
+            #Friction Velocity of Momentum
+            u_f=(K*(wind-u_f))/(cmath.log(z/zo)-Sm)
+            #Scaling Temperature
+            t_fv=(K*(T_air_pot-T_skin_pot))/(cmath.log(z/zot)-St)
+            #Scaling Humidity
+            q_f=(K*(q_air-q_sat))/(cmath.log(z/zoq)-Sq)
+            #Input for Stability function calculations
+            x=(1-16*(z/L))**.25
+            #Stability Function of Momentum
+            Sm=2*cmath.log((1+x)/2)+cmath.log((1+x**2)/2)-2*cmath.atan(x)+(m.pi/2)
+            #Stability Function of Vapor
+            Sq=2*cmath.log((1+x**2)/2)
+            #Roughness Length of Momemtum
+            zc=a*u_f**2/g
+            zs=0.11*v/u_f
+            zo=zc+zs
+            #Roughness Length of Vapor
+            zoq=7.4*zo*cmath.exp(-2.25*(zo*u_f/v)**.25)
+            #Monin-Obhukov Length
+            L=(Tv*u_f**2)/(K*g*t_fv)
+    except:
+        print('Could not converge on {}'.format(datetime))
+        return np.nan, np.nan, np.nan
     
     stability=z/L
     if ~np.isreal(L):
-        Ce_u=float('NaN')
+        Ce_u=np.nan
     else:
         if np.real(stability)<0:
             Ce_u=np.real(K**2/((cmath.log(z/zo)-Sm)*(cmath.log(z/zoq)-Sq)))
         else:
-            Ce_u=float('NaN')  
+            Ce_u=np.nan
     #################################################################
     #Nuetral Conditions, z/L=0
     #Initial Conditions
     zo=.00010
     
-    for x in range(0,199):
-        #Friction Velocity of Momentum
-        u_f=K*wind/m.log(z/zo)
-        #Roughness Length of Momemtum
-        zc=a*u_f**2/g
-        zs=0.11*v/u_f
-        zo=zc+zs
-        #Roughness Length of Vapor
-        zoq=7.4*zo*m.exp(-2.25*(zo*u_f/v)**.25)
+    try:
+        # avoid crash with bad values causing log of 0 or neg values
+        for x in range(0,199):
+            #Friction Velocity of Momentum
+            u_f=K*wind/m.log(z/zo)
+            #Roughness Length of Momemtum
+            zc=a*u_f**2/g
+            zs=0.11*v/u_f
+            zo=zc+zs
+            #Roughness Length of Vapor
+            zoq=7.4*zo*m.exp(-2.25*(zo*u_f/v)**.25)
+    except:
+        print('Could not converge on {}'.format(datetime))
+        return np.nan, np.nan, np.nan
+
     Ce_n=K**2/((m.log(z/zo))*(m.log(z/zoq)));
     ################################################################
     #Assign correct Ce value (stable, unstable, or neutral)
@@ -234,9 +267,8 @@ def aero(datetime,wind,pressure,T_air,T_skin,RH, sensor_height, timestep):
             Ce=Ce_n
     ################################################################
     #Calculated evaporation in mm/timestep
-    E=np.array(density_air*Ce*(q_sat-q_air)*wind*timestep)
+    E=density_air*Ce*(q_sat-q_air)*wind*timestep
+
     return E, Ce, VPD
         
-#if __name__ == "__main__":
-#        sys.exit(main())
     
