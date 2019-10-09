@@ -16,12 +16,13 @@ class Aero(object):
     mass-transfer evaporation calculation and contains methods for batch and
     single calculations.  
     
-    An :obj:`Aero` object conducts the aerodynamic mass-transfer evaporation
-    estimation using data from a :obj:`pandas.DataFrame` with a date
-    or datetime-like index. The :attr:`Aero.df` can be assigned on 
-    initialization or later, it can also be reassigned at anytime. 
+    An :obj:`Aero` object allows the aerodynamic mass-transfer evaporation
+    estimation to be calculated from meterological data that is stored in a
+    :obj:`pandas.DataFrame` with a date or datetime-like index. The
+    :attr:`Aero.df` can be assigned on initialization or later, it can also be
+    reassigned at anytime. 
 
-    The :meth:`Aero.single_calc` static method calculations evaporation for a 
+    The :meth:`Aero.single_calc` static method calculates evaporation for a 
     single measurement set and can be used without creating an :obj:`Aero` 
     object, e.g. in another module. For calculating evaporation for a time 
     series of input meterological data use the :meth:`Aero.run` method which
@@ -45,17 +46,31 @@ class Aero(object):
 
         Keyword Arguments:
             variable_names (None or dict): default None. Dictionary with user 
-                variable names and variable names needed for :mod:`aeroevap` 
-                as values. If None, the needed input variables must be named
-                correctly in the :attr:`Aero.df` dataframe: 'WS', 'P', 'T_air',
-                'T_skin', and 'RH' for windspeed, air pressure, air temperature,
-                skin temperature, and relative humidity resepctively.
+                variable names as keys and variable names needed for
+                :mod:`aeroevap` as values. If None, the needed input variables
+                must be named correctly in the :attr:`Aero.df` dataframe: 'WS',
+                'P', 'T_air', 'T_skin', and 'RH' for windspeed, air pressure,
+                air temperature, skin temperature, and relative humidity
+                resepctively.
             nproc (None or int): default None. If none use half of the available
                 cores for parallel calculations. 
 
         Returns:
             None
 
+        Hint:
+            A :obj:`pandas.DataFrame` must be assigned to the :attr:`Aero.df`
+            instance property before calling :meth:`Aero.run`. If the names of
+            the required meterological variables in the dataframe are not
+            named correctly you may pass a dictionary to the ``variable_names``
+            argument which maps your names to those used by ``AeroEvap``. For
+            example if your surface temperature column is named 'surface_temp'
+            then 
+            
+            >>> variable_names = {'surface_temp' : 'T_skin'}
+
+
+           
         """
 
         if not isinstance(self._df, pd.DataFrame):
@@ -129,6 +144,7 @@ class Aero(object):
 
         Returns (tuple): evaporation (mm/timestep), bulk transfer coefficient (Ce), and vapor pressure deficit (kPa)
 
+        
         """
        
         check=np.array(
@@ -214,25 +230,28 @@ class Aero(object):
             # avoid crash with bad values causing log of 0 or neg values
             for x in range(0, 199):
                 #Friction Velocity of Momentum
-                u_f=(K*(wind-u_f))/(cm.log(z/zo)-Sm)
+                u_f=np.divide((K*(wind-u_f)),(cm.log(z/zo)-Sm))
                 #Scaling Potential Temperature
-                t_fv=(K*(T_air_pot-T_skin_pot))/(cm.log(z/zot)-St)
+                t_fv=np.divide((K*(T_air_pot-T_skin_pot)),(cm.log(z/zot)-St))
                 #Scaling Humidity
-                q_f=(K*(q_air-q_sat))/(cm.log(z/zoq)-Sq)
+                q_f=np.divide((K*(q_air-q_sat)),(cm.log(z/zoq)-Sq))
                 #Stability Function of Momentum
                 Sm=np.float64(-5.2*(z))/L
                 #Stability Function of Vapor
-                Sq=np.float64(-5.2*(z))/L
+                Sq=np.divide(np.float64(-5.2*(z)),L)
                 #Roughness Length of Momemtum
-                zc=a*u_f**2/g;
-                zs=0.11*v/u_f;
+                zc=np.divide(a*u_f**2,g)
+                zs=np.divide(0.11*v,u_f)
                 zo=zc+zs;
                 #Roughness Length of Vapor
                 zoq=7.4*zo*cm.exp(-2.25*(zo*u_f/v)**.25)
                 #Monin-Obhukov Length
-                L=(Tv*u_f**2)/(K*g*t_fv);
+                L=np.divide((Tv*u_f**2),(K*g*t_fv))
         except:
-            print('Could not converge on {}'.format(datetime))
+            print('Could not converge on {} for stable conditions'.format(
+                    datetime
+                )
+            )
             return np.nan, np.nan, np.nan
 
         stability=z/L
@@ -269,17 +288,16 @@ class Aero(object):
         #Scaling Humidity
         q_f=(K*(q_air-q_sat))/(m.log(z/zoq)-Sq);
         #Monin-Obhukov Length
-        L=(Tv*u_f**2)/(K*g*t_fv);
+        L=np.divide((Tv*u_f**2),(K*g*t_fv))
         
         try:
-            # avoid crash with bad values causing log of 0 or neg values
             for x in range(0, 199):
                 #Friction Velocity of Momentum
-                u_f=(K*(wind-u_f))/(cm.log(z/zo)-Sm)
+                u_f=np.divide((K*(wind-u_f)),(cm.log(z/zo)-Sm))
                 #Scaling Temperature
-                t_fv=(K*(T_air_pot-T_skin_pot))/(cm.log(z/zot)-St)
+                t_fv=np.divide((K*(T_air_pot-T_skin_pot)),(cm.log(z/zot)-St))
                 #Scaling Humidity
-                q_f=(K*(q_air-q_sat))/(cm.log(z/zoq)-Sq)
+                q_f=np.divide((K*(q_air-q_sat)),(cm.log(z/zoq)-Sq))
                 #Input for Stability function calculations
                 x=(1-16*(z/L))**.25
                 #Stability Function of Momentum
@@ -287,16 +305,18 @@ class Aero(object):
                 #Stability Function of Vapor
                 Sq=2*cm.log((1+x**2)/2)
                 #Roughness Length of Momemtum
-                zc=a*u_f**2/g
-                zs=0.11*v/u_f
+                zc=np.divide(a*u_f**2,g)
+                zs=np.divide(0.11*v,u_f)
                 zo=zc+zs
                 #Roughness Length of Vapor
                 zoq=7.4*zo*cm.exp(-2.25*(zo*u_f/v)**.25)
                 #Monin-Obhukov Length
-                L=(Tv*u_f**2)/(K*g*t_fv)
+                L=np.divide((Tv*u_f**2),(K*g*t_fv))
         except:
-            print('Could not converge on {}'.format(datetime))
-            return np.nan, np.nan, np.nan
+            print('Could not converge on {} for unstable conditions'.format(
+                    datetime
+                )
+            )
         
         stability=z/L
         if ~np.isreal(L):
@@ -307,7 +327,7 @@ class Aero(object):
             else:
                 Ce_u=np.nan
         #################################################################
-        #Nuetral Conditions, z/L=0
+        #Neutral Conditions, z/L=0
         #Initial Conditions
         zo=.00010
         
@@ -315,18 +335,23 @@ class Aero(object):
             # avoid crash with bad values causing log of 0 or neg values
             for x in range(0,199):
                 #Friction Velocity of Momentum
-                u_f=K*wind/m.log(z/zo)
+                u_f=np.divide((K*wind),(np.emath.log(z/zo)))
                 #Roughness Length of Momemtum
-                zc=a*u_f**2/g
-                zs=0.11*v/u_f
+                zc=np.divide((a*u_f**2),g)
+                zs=np.divide(0.11*v,u_f)
                 zo=zc+zs
                 #Roughness Length of Vapor
                 zoq=7.4*zo*m.exp(-2.25*(zo*u_f/v)**.25)
         except:
-            print('Could not converge on {}'.format(datetime))
-            return np.nan, np.nan, np.nan
+            print('Could not converge on {} for neutral conditions'.format(
+                    datetime
+                )
+            )
 
-        Ce_n=K**2/((m.log(z/zo))*(m.log(z/zoq)));
+        Ce_n=np.divide(
+            (K**2),
+            ((np.emath.log(np.divide(z,zo)))*(np.emath.log(np.divide(z,zoq))))
+        )
         ################################################################
         #Assign correct Ce value (stable, unstable, or neutral)
         
