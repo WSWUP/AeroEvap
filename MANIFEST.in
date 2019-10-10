@@ -1,2 +1,3 @@
 include environment.yml
 include LICENSE.txt
+graft notebooks

@@ -19,7 +19,7 @@ Example data
 This example uses buoy data from a location near south-central Lake
 Huron, MI (NOAA station ID is 45008). The buoy is maintained by the
 National Data Buoy Center (NDBC), more buoy information is shown in the
-embededd page below. The meterologicla data used in this example is
+embedded page below. The meterological data used in this example is
 hosted by NOAA and downloaded directly and formatted for a month of
 data.
 
@@ -206,6 +206,7 @@ Make a datetime index and clean up the dataframe.
       </tbody>
     </table>
     </div>
+    <br>
 
 
 
@@ -222,7 +223,6 @@ aerodynamic mass-transfer evaporation calculations.
 
     >>> # calculate relative humitidy
     >>> met_df['RH'] = 100 * (met_df.e/met_df.es)
-    >>> 
     >>> plt.figure(figsize=(8,4))
     >>> met_df.RH.plot()
     >>> plt.ylabel('estimated relative humitidy')
@@ -497,25 +497,23 @@ As mentioned, this dataset has unique naming conventions, therefore we need to t
 
 Alternatively you could rename wind speed, air and surface temperature, and air pressure columns to the apprpriate names specified in the table above in :ref:`Input variables and units`.
 
-Now we are ready to run the aerodynamic mass-transer evaporation on all
-the time series in our dataframe. Lastly, the sensor height of the
-anemometer and temporal sampling frequency of the data needs to be
-supplied.
+Now we are ready to run the aerodynamic mass-transer evaporation on the full
+time series in our dataframe. Lastly, the sensor height of the anemometer and
+temporal sampling frequency of the data needs to be supplied, in this case the
+height is 4 meters and the data frequency is 10 minutes or 600 seconds.
 
-This example assumes there are 8 physical and logical processors
+This example assumes there are 8 physical or logical processors
 available for parallelization, if not specified the :meth:`Aero.run` routine
-wil try to use half of the avialble processors.
+will attempt to use half of the available processors.
 
     >>> np.seterr('ignore')
     >>> # create a new Aero object and calculate evaporation on all rows
     >>> A = Aero(met_df)
     >>> A.run(sensor_height=4, timestep=600, variable_names=names)
 
-After the calculations are complete three variables will be added to the
-:attr:`Aero.df` dataframe: ‘E’, ‘Ce’, and ‘VPD’ which are evaporation in
-mm/timestep, bulk transfer coefficient, and vapor pressure deficit
+After the calculations are complete three new time series will be added to the
+:attr:`Aero.df` dataframe: ‘E’, ‘Ce’, and ‘VPD’ which are open-water evaporation (mm/timestep), bulk transfer coefficient, and vapor pressure deficit
 (kPa).
-
 
     >>> A.df[['E', 'Ce', 'VPD']].head()
 
@@ -586,7 +584,6 @@ mm/timestep, bulk transfer coefficient, and vapor pressure deficit
     </div>
 
 
-
 View the calculated evaporation,
 
     >>> plt.figure(figsize=(8,4))
@@ -600,8 +597,6 @@ View the calculated evaporation,
 The calculated open-water evaporation is shown below after creating a
 daily sum.
 
-
-    >>> import matplotlib.pyplot as plt
     >>> plt.figure(figsize=(8,4))
     >>> A.df.E.resample('D').sum().plot()
     >>> plt.ylabel('evaporation mm/day')
@@ -653,4 +648,7 @@ calculate E, Ce, and VPD:
     >>> E, Ce, VPD
         (0.013347901575421104, 0.0018616426530205339, 0.44947250457458576)
 
+Theory behind calculations
+--------------------------
 
+This is a work in progress, for now please refer to `references hosted on GitHub <https://github.com/WSWUP/AeroEvap/tree/master/references>`_ about the methodologies used.
