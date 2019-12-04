@@ -32,7 +32,7 @@ Indices and tables
    :target: https://aeroevap.readthedocs.io/en/latest/?badge=latest
 
 .. |Downloads per month| image:: https://img.shields.io/pypi/dm/aeroevap.svg
-   :target: https://pypi.python.org/pypi/aeroevap/
+   :target: https://pypi.python.org/pypi/AeroEvap/
 
 .. |PyPI version| image:: https://img.shields.io/pypi/v/aeroevap.svg
-   :target: https://pypi.python.org/pypi/aeroevap/
+   :target: https://pypi.python.org/pypi/AeroEvap/

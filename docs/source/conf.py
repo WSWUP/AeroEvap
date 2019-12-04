@@ -29,7 +29,7 @@ version = ''
 release = ''
 
 try:
-    from fluxdataqaqc import __version__ as version
+    from aeroevap import __version__ as version
 except ImportError:
     pass
 else:

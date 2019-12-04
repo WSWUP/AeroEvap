@@ -233,10 +233,10 @@ aerodynamic mass-transfer evaporation calculations.
 In this case we do *not* need to convert air pressure to millibars
 because 1 hPa = 1 mbar.
 
-Create an ``Aero`` object
--------------------------
+Create an :obj:`.Aero` object
+-----------------------------
 
-The ``Aero`` object allows for loading a :obj:`pandas.DataFrame` containing
+The :obj:`.Aero` object allows for loading a :obj:`pandas.DataFrame` containing
 meterological data required for calculating aerodynamic mass-transfer
 open water evaporation in parrallel. The object can be initialized from
 a :obj:`pandas.DataFrame` or the :obj:`pandas.DataFrame` can be assigned
@@ -421,7 +421,7 @@ later, e.g.
 
    <br>
 
-You may only assign a :obj:`pandas.DataFrame` to :attr:`Aero.df`,
+You may only assign a :obj:`pandas.DataFrame` to :attr:`.Aero.df`,
 
     >>> # this will not work, df needs to be a dataframe
     >>> Aero_empty.df = 'high five'
@@ -449,10 +449,10 @@ You may only assign a :obj:`pandas.DataFrame` to :attr:`Aero.df`,
 
 
 .. Tip:: 
-   The ``df`` is a property of the ``Aero`` class which means it can be
+   The ``df`` is a property of the :obj:`.Aero` class which means it can be
    assigned or reassigned if, for example, you wanted to run the evaporation
    calculations on a modified version of input meterological time series
-   without creating a new ``Aero`` instance.
+   without creating a new :obj:`.Aero` instance.
 
 Input variables and units
 -------------------------
@@ -471,7 +471,7 @@ relative humidity 0-100 RH
 ================= ===== ======
 
 where the “naming” column refers to the internal names expected by the
-:meth:`Aero.run` method, i.e. the column headers in the dataframe should
+:meth:`.Aero.run` method, i.e. the column headers in the dataframe should
 either be named accordingly or a dictionary that maps your column names
 to those internal names can be passed (see examples below).
 
@@ -500,7 +500,7 @@ temporal sampling frequency of the data needs to be supplied, in this case the
 height is 4 meters and the data frequency is 10 minutes or 600 seconds.
 
 This example assumes there are 8 physical or logical processors
-available for parallelization, if not specified the :meth:`Aero.run` routine
+available for parallelization, if not specified the :meth:`.Aero.run` routine
 will attempt to use half of the available processors.
 
     >>> np.seterr('ignore')
@@ -509,7 +509,7 @@ will attempt to use half of the available processors.
     >>> A.run(sensor_height=4, timestep=600, variable_names=names)
 
 After the calculations are complete three new time series will be added to the
-:attr:`Aero.df` dataframe: ‘E’, ‘Ce’, and ‘VPD’ which are open-water evaporation (mm/timestep), bulk transfer coefficient, and vapor pressure deficit
+:attr:`.Aero.df` dataframe: ‘E’, ‘Ce’, and ‘VPD’ which are open-water evaporation (mm/timestep), bulk transfer coefficient, and vapor pressure deficit
 (kPa).
 
     >>> A.df[['E', 'Ce', 'VPD']].head()
@@ -617,10 +617,10 @@ And the wind speed relation versus the calculated evaporation.
 Single calculation
 ------------------
 
-The ``Aero`` class also provides a method :meth:`Aero.single_calc` that can
+The :obj:`.Aero` class also provides a method :meth:`.Aero.single_calc` that can
 be used on a single set of meterological data to calculate the
 instantaneous open-water evaporation. It requires the same inputs as
-:meth:`Aero.run` however the inputs are scalars as opposed to time series.
+:meth:`.Aero.run` however the inputs are scalars as opposed to time series.
 For example using the first timestamp of our example buoy data we can
 calculate E, Ce, and VPD:
 
