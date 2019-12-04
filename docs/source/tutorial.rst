@@ -124,82 +124,82 @@ Make a datetime index and clean up the dataframe.
       </thead>
       <tbody>
         <tr>
-          <td>2019-08-01 00:00:00</td>
-          <td>344.0</td>
-          <td>3.3</td>
-          <td>3.9</td>
-          <td>99.00</td>
+          <td>2019-10-01 00:00:00</td>
+          <td>182.0</td>
+          <td>7.2</td>
+          <td>8.4</td>
+          <td>99.0</td>
           <td>99.0</td>
           <td>99.00</td>
           <td>NaN</td>
-          <td>1021.2</td>
+          <td>1014.0</td>
+          <td>19.1</td>
+          <td>17.7</td>
           <td>18.1</td>
-          <td>18.4</td>
-          <td>14.7</td>
           <td>99.0</td>
           <td>99.0</td>
         </tr>
         <tr>
-          <td>2019-08-01 00:10:00</td>
-          <td>342.0</td>
-          <td>3.3</td>
-          <td>3.9</td>
-          <td>99.00</td>
+          <td>2019-10-01 00:10:00</td>
+          <td>183.0</td>
+          <td>7.2</td>
+          <td>8.5</td>
+          <td>99.0</td>
           <td>99.0</td>
           <td>99.00</td>
           <td>NaN</td>
-          <td>1021.2</td>
-          <td>18.1</td>
-          <td>18.4</td>
-          <td>14.4</td>
+          <td>1014.1</td>
+          <td>19.3</td>
+          <td>17.7</td>
+          <td>18.2</td>
           <td>99.0</td>
           <td>99.0</td>
         </tr>
         <tr>
-          <td>2019-08-01 00:20:00</td>
-          <td>344.0</td>
-          <td>3.4</td>
-          <td>3.9</td>
-          <td>99.00</td>
+          <td>2019-10-01 00:20:00</td>
+          <td>183.0</td>
+          <td>7.4</td>
+          <td>8.7</td>
+          <td>99.0</td>
           <td>99.0</td>
           <td>99.00</td>
           <td>NaN</td>
-          <td>1021.0</td>
-          <td>18.1</td>
-          <td>NaN</td>
-          <td>14.0</td>
+          <td>1014.1</td>
+          <td>19.3</td>
+          <td>17.7</td>
+          <td>18.2</td>
           <td>99.0</td>
           <td>99.0</td>
         </tr>
         <tr>
-          <td>2019-08-01 00:30:00</td>
-          <td>343.0</td>
-          <td>3.2</td>
-          <td>3.9</td>
-          <td>99.00</td>
+          <td>2019-10-01 00:30:00</td>
+          <td>182.0</td>
+          <td>7.6</td>
+          <td>8.8</td>
+          <td>99.0</td>
           <td>99.0</td>
           <td>99.00</td>
           <td>NaN</td>
-          <td>1021.0</td>
-          <td>18.1</td>
-          <td>18.4</td>
-          <td>14.2</td>
+          <td>1014.0</td>
+          <td>19.4</td>
+          <td>17.7</td>
+          <td>18.3</td>
           <td>99.0</td>
           <td>99.0</td>
         </tr>
         <tr>
-          <td>2019-08-01 00:40:00</td>
-          <td>341.0</td>
-          <td>3.3</td>
-          <td>3.9</td>
-          <td>0.27</td>
-          <td>3.7</td>
-          <td>2.81</td>
-          <td>335.0</td>
-          <td>1021.0</td>
-          <td>18.1</td>
-          <td>18.4</td>
-          <td>14.2</td>
+          <td>2019-10-01 00:40:00</td>
+          <td>181.0</td>
+          <td>7.2</td>
+          <td>8.9</td>
+          <td>0.7</td>
+          <td>4.0</td>
+          <td>3.29</td>
+          <td>173.0</td>
+          <td>1014.1</td>
+          <td>19.3</td>
+          <td>17.7</td>
+          <td>18.3</td>
           <td>99.0</td>
           <td>99.0</td>
         </tr>
@@ -230,11 +230,8 @@ aerodynamic mass-transfer evaporation calculations.
 
 .. figure:: _static/RH.png
 
-
-In this case we also need to convert air pressure to kPa, see below for
-required input units.
-
-    >>> met_df.PRES = met_df.PRES / 10
+In this case we do *not* need to convert air pressure to millibars
+because 1 hPa = 1 mbar.
 
 Create an ``Aero`` object
 -------------------------
@@ -322,99 +319,99 @@ later, e.g.
       </thead>
       <tbody>
         <tr>
-          <td>2019-08-01 00:00:00</td>
-          <td>344.0</td>
-          <td>3.3</td>
-          <td>3.9</td>
-          <td>99.00</td>
+          <td>2019-10-01 00:00:00</td>
+          <td>182.0</td>
+          <td>7.2</td>
+          <td>8.4</td>
+          <td>99.0</td>
           <td>99.0</td>
           <td>99.00</td>
           <td>NaN</td>
-          <td>102.12</td>
+          <td>1014.0</td>
+          <td>19.1</td>
+          <td>17.7</td>
           <td>18.1</td>
-          <td>18.4</td>
-          <td>14.7</td>
           <td>99.0</td>
           <td>99.0</td>
-          <td>1.702567</td>
           <td>2.121383</td>
-          <td>80.257421</td>
+          <td>2.260938</td>
+          <td>93.827547</td>
         </tr>
         <tr>
-          <td>2019-08-01 00:10:00</td>
-          <td>342.0</td>
-          <td>3.3</td>
-          <td>3.9</td>
-          <td>99.00</td>
+          <td>2019-10-01 00:10:00</td>
+          <td>183.0</td>
+          <td>7.2</td>
+          <td>8.5</td>
+          <td>99.0</td>
           <td>99.0</td>
           <td>99.00</td>
           <td>NaN</td>
-          <td>102.12</td>
-          <td>18.1</td>
-          <td>18.4</td>
-          <td>14.4</td>
+          <td>1014.1</td>
+          <td>19.3</td>
+          <td>17.7</td>
+          <td>18.2</td>
           <td>99.0</td>
           <td>99.0</td>
-          <td>1.669429</td>
-          <td>2.121383</td>
-          <td>78.695334</td>
+          <td>2.134983</td>
+          <td>2.289812</td>
+          <td>93.238366</td>
         </tr>
         <tr>
-          <td>2019-08-01 00:20:00</td>
-          <td>344.0</td>
-          <td>3.4</td>
-          <td>3.9</td>
-          <td>99.00</td>
+          <td>2019-10-01 00:20:00</td>
+          <td>183.0</td>
+          <td>7.4</td>
+          <td>8.7</td>
+          <td>99.0</td>
           <td>99.0</td>
           <td>99.00</td>
           <td>NaN</td>
-          <td>102.10</td>
-          <td>18.1</td>
-          <td>NaN</td>
-          <td>14.0</td>
+          <td>1014.1</td>
+          <td>19.3</td>
+          <td>17.7</td>
+          <td>18.2</td>
           <td>99.0</td>
           <td>99.0</td>
-          <td>1.626143</td>
-          <td>2.121383</td>
-          <td>76.654845</td>
+          <td>2.134983</td>
+          <td>2.289812</td>
+          <td>93.238366</td>
         </tr>
         <tr>
-          <td>2019-08-01 00:30:00</td>
-          <td>343.0</td>
-          <td>3.2</td>
-          <td>3.9</td>
-          <td>99.00</td>
+          <td>2019-10-01 00:30:00</td>
+          <td>182.0</td>
+          <td>7.6</td>
+          <td>8.8</td>
+          <td>99.0</td>
           <td>99.0</td>
           <td>99.00</td>
           <td>NaN</td>
-          <td>102.10</td>
-          <td>18.1</td>
-          <td>18.4</td>
-          <td>14.2</td>
+          <td>1014.0</td>
+          <td>19.4</td>
+          <td>17.7</td>
+          <td>18.3</td>
           <td>99.0</td>
           <td>99.0</td>
-          <td>1.647659</td>
-          <td>2.121383</td>
-          <td>77.669099</td>
+          <td>2.148662</td>
+          <td>2.304372</td>
+          <td>93.242836</td>
         </tr>
         <tr>
-          <td>2019-08-01 00:40:00</td>
-          <td>341.0</td>
-          <td>3.3</td>
-          <td>3.9</td>
-          <td>0.27</td>
-          <td>3.7</td>
-          <td>2.81</td>
-          <td>335.0</td>
-          <td>102.10</td>
-          <td>18.1</td>
-          <td>18.4</td>
-          <td>14.2</td>
+          <td>2019-10-01 00:40:00</td>
+          <td>181.0</td>
+          <td>7.2</td>
+          <td>8.9</td>
+          <td>0.7</td>
+          <td>4.0</td>
+          <td>3.29</td>
+          <td>173.0</td>
+          <td>1014.1</td>
+          <td>19.3</td>
+          <td>17.7</td>
+          <td>18.3</td>
           <td>99.0</td>
           <td>99.0</td>
-          <td>1.647659</td>
-          <td>2.121383</td>
-          <td>77.669099</td>
+          <td>2.148662</td>
+          <td>2.289812</td>
+          <td>93.835735</td>
         </tr>
       </tbody>
     </table>
@@ -467,7 +464,7 @@ mass-transfer estimation of evaporation are the following:
 variable          units naming
 ================= ===== ======
 wind speed        m/s   WS
-air pressure      kPa   P
+air pressure      mbar  P
 air temperature   C     T_air
 skin temperature  C     T_skin
 relative humidity 0-100 RH
@@ -550,38 +547,39 @@ After the calculations are complete three new time series will be added to the
       </thead>
       <tbody>
         <tr>
-          <td>2019-08-01 00:00:00</td>
-          <td>0.013349</td>
-          <td>0.001862</td>
-          <td>0.449526</td>
+          <td>2019-10-01 00:00:00</td>
+          <td>-0.002144</td>
+          <td>0.001351</td>
+          <td>-0.049282</td>
         </tr>
         <tr>
-          <td>2019-08-01 00:10:00</td>
-          <td>0.014311</td>
-          <td>0.001861</td>
-          <td>0.481971</td>
+          <td>2019-10-01 00:10:00</td>
+          <td>-0.002683</td>
+          <td>0.001343</td>
+          <td>-0.062099</td>
         </tr>
         <tr>
-          <td>2019-08-01 00:20:00</td>
-          <td>NaN</td>
-          <td>NaN</td>
-          <td>NaN</td>
+          <td>2019-10-01 00:20:00</td>
+          <td>-0.002782</td>
+          <td>0.001355</td>
+          <td>-0.062099</td>
         </tr>
         <tr>
-          <td>2019-08-01 00:30:00</td>
-          <td>0.014593</td>
-          <td>0.001874</td>
-          <td>0.503286</td>
+          <td>2019-10-01 00:30:00</td>
+          <td>-0.003479</td>
+          <td>0.001362</td>
+          <td>-0.075227</td>
         </tr>
         <tr>
-          <td>2019-08-01 00:40:00</td>
-          <td>0.014943</td>
-          <td>0.001861</td>
-          <td>0.503286</td>
+          <td>2019-10-01 00:40:00</td>
+          <td>-0.003261</td>
+          <td>0.001343</td>
+          <td>-0.075473</td>
         </tr>
       </tbody>
     </table>
     </div>
+
 
 
 View the calculated evaporation,
@@ -628,7 +626,7 @@ calculate E, Ce, and VPD:
 
     >>> datetime = '2019-08-01 00:00:00'
     >>> wind = 3.3
-    >>> pressure = 102.12
+    >>> pressure = 1021.2
     >>> T_air = 18.1
     >>> T_skin = 18.4
     >>> RH = 80.26
@@ -646,7 +644,7 @@ calculate E, Ce, and VPD:
     >>> )
 
     >>> E, Ce, VPD
-        (0.013347901575421104, 0.0018616426530205339, 0.44947250457458576)
+        (0.008724959939647368, 0.001310850807452679, 0.44947250457458576)
 
 Theory behind calculations
 --------------------------

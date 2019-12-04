@@ -108,6 +108,9 @@ class Aero(object):
         results_df = pd.concat(results)
         output_vars = ['E', 'Ce', 'VPD']
         self._df[output_vars] = results_df[output_vars]
+        for el in ['date', 'SH', 'dt']:
+            if el in self._df:
+                self._df.drop(el, axis=1, inplace=True)
 
     @property
     def df(self):
@@ -135,14 +138,15 @@ class Aero(object):
             datetime (datetime.datetime or str): date-time of measurements for
                 error logging.
             wind (float): windspeed in m/s
-            pressure (float): air pressure in kPa
+            pressure (float): air pressure in mbar
             T_air (float): air temperature in C
             T_skin (float): skin temperature (water surface) in C
             RH (float): relative humidity (0-100)
             sensor_height (float): sensor height in m
             timestep (int or float): measurement frequency in seconds
 
-        Returns (tuple): evaporation (mm/timestep), bulk transfer coefficient (Ce), and vapor pressure deficit (kPa)
+        Returns (tuple): 
+            evaporation (mm/timestep), bulk transfer coefficient (Ce), and vapor pressure deficit (kPa)
 
         
         """

@@ -1,8 +1,15 @@
 AeroEvap
 ========
 
+|Documentation Status| |Downloads per month| |PyPI version|
+
+
 Python version of aerodynamic mass-transfer approach for open-water evaporation
 
+Documentation
+-------------
+
+`ReadTheDocs <https://aeroevap.readthedocs.io/>`__
 
 Installation
 ------------
@@ -21,3 +28,14 @@ Once activated install with PIP:
 .. code-block:: bash
 
    pip install aeroevap
+
+
+.. |Documentation Status| image:: https://readthedocs.org/projects/aeroevap/badge/?version=latest
+   :target: https://aeroevap.readthedocs.io/en/latest/?badge=latest
+
+.. |Downloads per month| image:: https://img.shields.io/pypi/dm/aeroevap.svg
+   :target: https://pypi.python.org/pypi/aeroevap/
+
+.. |PyPI version| image:: https://img.shields.io/pypi/v/aeroevap.svg
+   :target: https://pypi.python.org/pypi/aeroevap/
+
