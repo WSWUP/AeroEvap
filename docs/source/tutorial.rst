@@ -16,19 +16,18 @@ if you want the plots to display correctly.
 Example data
 ------------
 
-This example uses buoy data from a location near south-central Lake
-Huron, MI (NOAA station ID is 45008). The buoy is maintained by the
-National Data Buoy Center (NDBC), more buoy information is shown in the
-embedded page below. The meterological data used in this example is
-hosted by NOAA and downloaded directly and formatted for a month of
-data.
+This example uses buoy data from a location near Savannah, GA (NOAA station ID
+is 41008). The buoy is maintained by the National Data Buoy Center (NDBC), more
+buoy information is shown in the embedded page below. The meterological data
+used in this example is hosted by NOAA and downloaded directly and formatted
+for a month of data.
 
 .. raw:: html
     
     <iframe
         width="700"
         height="500"
-        src="https://www.ndbc.noaa.gov/station_page.php?station=45008"
+        src="https://www.ndbc.noaa.gov/station_page.php?station=41008"
         frameborder="0"
         allowfullscreen
     ></iframe>
@@ -48,7 +47,7 @@ degT m/s  m/s m    sec sec deg hPa  degC degC degC nmi ft
     
     >>> # get standard meterological data from National Data Buoy Center
     >>> met_df = pd.read_csv(
-    >>>     'https://www.ndbc.noaa.gov/data/l_stdmet/45008.txt', 
+    >>>     'https://www.ndbc.noaa.gov/data/l_stdmet/41008.txt', 
     >>>     delim_whitespace=True, skiprows=[1], na_values=[999.0]
     >>> )
 
@@ -73,16 +72,16 @@ Make a datetime index and clean up the dataframe.
 
 .. raw:: html
 
-    <div>
+     <div>
     <style scoped>
         .dataframe tbody tr th:only-of-type {
             vertical-align: middle;
         }
-    
+
         .dataframe tbody tr th {
             vertical-align: top;
         }
-    
+
         .dataframe thead th {
             text-align: right;
         }
@@ -124,82 +123,82 @@ Make a datetime index and clean up the dataframe.
       </thead>
       <tbody>
         <tr>
-          <td>2019-10-01 00:00:00</td>
-          <td>182.0</td>
-          <td>7.2</td>
-          <td>8.4</td>
-          <td>99.0</td>
-          <td>99.0</td>
-          <td>99.00</td>
-          <td>NaN</td>
-          <td>1014.0</td>
-          <td>19.1</td>
-          <td>17.7</td>
-          <td>18.1</td>
+          <td>2020-01-31 23:50:00</td>
+          <td>359</td>
+          <td>10.1</td>
+          <td>11.8</td>
+          <td>1.80</td>
+          <td>8.33</td>
+          <td>5.01</td>
+          <td>101.0</td>
+          <td>1016.8</td>
+          <td>11.0</td>
+          <td>13.9</td>
+          <td>10.4</td>
           <td>99.0</td>
           <td>99.0</td>
         </tr>
         <tr>
-          <td>2019-10-01 00:10:00</td>
-          <td>183.0</td>
-          <td>7.2</td>
+          <td>2020-02-01 00:50:00</td>
+          <td>349</td>
+          <td>8.1</td>
+          <td>9.6</td>
+          <td>1.68</td>
+          <td>5.56</td>
+          <td>4.99</td>
+          <td>69.0</td>
+          <td>1017.6</td>
+          <td>10.6</td>
+          <td>13.9</td>
+          <td>10.0</td>
+          <td>99.0</td>
+          <td>99.0</td>
+        </tr>
+        <tr>
+          <td>2020-02-01 01:50:00</td>
+          <td>13</td>
           <td>8.5</td>
-          <td>99.0</td>
-          <td>99.0</td>
-          <td>99.00</td>
-          <td>NaN</td>
-          <td>1014.1</td>
-          <td>19.3</td>
-          <td>17.7</td>
-          <td>18.2</td>
-          <td>99.0</td>
-          <td>99.0</td>
-        </tr>
-        <tr>
-          <td>2019-10-01 00:20:00</td>
-          <td>183.0</td>
-          <td>7.4</td>
-          <td>8.7</td>
-          <td>99.0</td>
-          <td>99.0</td>
-          <td>99.00</td>
-          <td>NaN</td>
-          <td>1014.1</td>
-          <td>19.3</td>
-          <td>17.7</td>
-          <td>18.2</td>
+          <td>10.1</td>
+          <td>1.61</td>
+          <td>7.69</td>
+          <td>5.10</td>
+          <td>105.0</td>
+          <td>1016.4</td>
+          <td>10.1</td>
+          <td>14.0</td>
+          <td>9.5</td>
           <td>99.0</td>
           <td>99.0</td>
         </tr>
         <tr>
-          <td>2019-10-01 00:30:00</td>
-          <td>182.0</td>
-          <td>7.6</td>
-          <td>8.8</td>
-          <td>99.0</td>
-          <td>99.0</td>
-          <td>99.00</td>
-          <td>NaN</td>
-          <td>1014.0</td>
-          <td>19.4</td>
-          <td>17.7</td>
-          <td>18.3</td>
+          <td>2020-02-01 02:50:00</td>
+          <td>24</td>
+          <td>7.8</td>
+          <td>9.1</td>
+          <td>1.68</td>
+          <td>7.14</td>
+          <td>5.17</td>
+          <td>103.0</td>
+          <td>1015.8</td>
+          <td>10.1</td>
+          <td>14.1</td>
+          <td>9.5</td>
           <td>99.0</td>
           <td>99.0</td>
         </tr>
         <tr>
-          <td>2019-10-01 00:40:00</td>
-          <td>181.0</td>
-          <td>7.2</td>
-          <td>8.9</td>
-          <td>0.7</td>
-          <td>4.0</td>
-          <td>3.29</td>
-          <td>173.0</td>
-          <td>1014.1</td>
-          <td>19.3</td>
-          <td>17.7</td>
-          <td>18.3</td>
+          <td>2020-02-01 03:50:00</td>
+          <td>35</td>
+          <td>7.1</td>
+          <td>9.0</td>
+          <td>1.59</td>
+          <td>6.67</td>
+          <td>5.13</td>
+          <td>103.0</td>
+          <td>1015.6</td>
+          <td>10.6</td>
+          <td>14.2</td>
+          <td>10.0</td>
           <td>99.0</td>
           <td>99.0</td>
         </tr>
@@ -267,11 +266,11 @@ later, e.g.
         .dataframe tbody tr th:only-of-type {
             vertical-align: middle;
         }
-    
+
         .dataframe tbody tr th {
             vertical-align: top;
         }
-    
+
         .dataframe thead th {
             text-align: right;
         }
@@ -319,99 +318,99 @@ later, e.g.
       </thead>
       <tbody>
         <tr>
-          <td>2019-10-01 00:00:00</td>
-          <td>182.0</td>
-          <td>7.2</td>
-          <td>8.4</td>
+          <td>2020-01-31 23:50:00</td>
+          <td>359</td>
+          <td>10.1</td>
+          <td>11.8</td>
+          <td>1.80</td>
+          <td>8.33</td>
+          <td>5.01</td>
+          <td>101.0</td>
+          <td>1016.8</td>
+          <td>11.0</td>
+          <td>13.9</td>
+          <td>10.4</td>
           <td>99.0</td>
           <td>99.0</td>
-          <td>99.00</td>
-          <td>NaN</td>
-          <td>1014.0</td>
-          <td>19.1</td>
-          <td>17.7</td>
-          <td>18.1</td>
-          <td>99.0</td>
-          <td>99.0</td>
-          <td>2.121383</td>
-          <td>2.260938</td>
-          <td>93.827547</td>
+          <td>1.279457</td>
+          <td>1.332185</td>
+          <td>96.042019</td>
         </tr>
         <tr>
-          <td>2019-10-01 00:10:00</td>
-          <td>183.0</td>
-          <td>7.2</td>
+          <td>2020-02-01 00:50:00</td>
+          <td>349</td>
+          <td>8.1</td>
+          <td>9.6</td>
+          <td>1.68</td>
+          <td>5.56</td>
+          <td>4.99</td>
+          <td>69.0</td>
+          <td>1017.6</td>
+          <td>10.6</td>
+          <td>13.9</td>
+          <td>10.0</td>
+          <td>99.0</td>
+          <td>99.0</td>
+          <td>1.245352</td>
+          <td>1.296822</td>
+          <td>96.031065</td>
+        </tr>
+        <tr>
+          <td>2020-02-01 01:50:00</td>
+          <td>13</td>
           <td>8.5</td>
+          <td>10.1</td>
+          <td>1.61</td>
+          <td>7.69</td>
+          <td>5.10</td>
+          <td>105.0</td>
+          <td>1016.4</td>
+          <td>10.1</td>
+          <td>14.0</td>
+          <td>9.5</td>
           <td>99.0</td>
           <td>99.0</td>
-          <td>99.00</td>
-          <td>NaN</td>
-          <td>1014.1</td>
-          <td>19.3</td>
-          <td>17.7</td>
-          <td>18.2</td>
-          <td>99.0</td>
-          <td>99.0</td>
-          <td>2.134983</td>
-          <td>2.289812</td>
-          <td>93.238366</td>
+          <td>1.203866</td>
+          <td>1.253801</td>
+          <td>96.017309</td>
         </tr>
         <tr>
-          <td>2019-10-01 00:20:00</td>
-          <td>183.0</td>
-          <td>7.4</td>
-          <td>8.7</td>
+          <td>2020-02-01 02:50:00</td>
+          <td>24</td>
+          <td>7.8</td>
+          <td>9.1</td>
+          <td>1.68</td>
+          <td>7.14</td>
+          <td>5.17</td>
+          <td>103.0</td>
+          <td>1015.8</td>
+          <td>10.1</td>
+          <td>14.1</td>
+          <td>9.5</td>
           <td>99.0</td>
           <td>99.0</td>
-          <td>99.00</td>
-          <td>NaN</td>
-          <td>1014.1</td>
-          <td>19.3</td>
-          <td>17.7</td>
-          <td>18.2</td>
-          <td>99.0</td>
-          <td>99.0</td>
-          <td>2.134983</td>
-          <td>2.289812</td>
-          <td>93.238366</td>
+          <td>1.203866</td>
+          <td>1.253801</td>
+          <td>96.017309</td>
         </tr>
         <tr>
-          <td>2019-10-01 00:30:00</td>
-          <td>182.0</td>
-          <td>7.6</td>
-          <td>8.8</td>
+          <td>2020-02-01 03:50:00</td>
+          <td>35</td>
+          <td>7.1</td>
+          <td>9.0</td>
+          <td>1.59</td>
+          <td>6.67</td>
+          <td>5.13</td>
+          <td>103.0</td>
+          <td>1015.6</td>
+          <td>10.6</td>
+          <td>14.2</td>
+          <td>10.0</td>
           <td>99.0</td>
           <td>99.0</td>
-          <td>99.00</td>
-          <td>NaN</td>
-          <td>1014.0</td>
-          <td>19.4</td>
-          <td>17.7</td>
-          <td>18.3</td>
-          <td>99.0</td>
-          <td>99.0</td>
-          <td>2.148662</td>
-          <td>2.304372</td>
-          <td>93.242836</td>
-        </tr>
-        <tr>
-          <td>2019-10-01 00:40:00</td>
-          <td>181.0</td>
-          <td>7.2</td>
-          <td>8.9</td>
-          <td>0.7</td>
-          <td>4.0</td>
-          <td>3.29</td>
-          <td>173.0</td>
-          <td>1014.1</td>
-          <td>19.3</td>
-          <td>17.7</td>
-          <td>18.3</td>
-          <td>99.0</td>
-          <td>99.0</td>
-          <td>2.148662</td>
-          <td>2.289812</td>
-          <td>93.835735</td>
+          <td>1.245352</td>
+          <td>1.296822</td>
+          <td>96.031065</td>
         </tr>
       </tbody>
     </table>
@@ -547,39 +546,38 @@ After the calculations are complete three new time series will be added to the
       </thead>
       <tbody>
         <tr>
-          <td>2019-10-01 00:00:00</td>
-          <td>-0.002144</td>
-          <td>0.001351</td>
-          <td>-0.049282</td>
+          <td>2020-01-31 23:50:00</td>
+          <td>0.023573</td>
+          <td>0.001552</td>
+          <td>0.327503</td>
         </tr>
         <tr>
-          <td>2019-10-01 00:10:00</td>
-          <td>-0.002683</td>
-          <td>0.001343</td>
-          <td>-0.062099</td>
+          <td>2020-02-01 00:50:00</td>
+          <td>0.020519</td>
+          <td>0.001527</td>
+          <td>0.360776</td>
         </tr>
         <tr>
-          <td>2019-10-01 00:20:00</td>
-          <td>-0.002782</td>
-          <td>0.001355</td>
-          <td>-0.062099</td>
+          <td>2020-02-01 01:50:00</td>
+          <td>0.024901</td>
+          <td>0.001545</td>
+          <td>0.411624</td>
         </tr>
         <tr>
-          <td>2019-10-01 00:30:00</td>
-          <td>-0.003479</td>
-          <td>0.001362</td>
-          <td>-0.075227</td>
+          <td>2020-02-01 02:50:00</td>
+          <td>0.023312</td>
+          <td>0.001538</td>
+          <td>0.422028</td>
         </tr>
         <tr>
-          <td>2019-10-01 00:40:00</td>
-          <td>-0.003261</td>
-          <td>0.001343</td>
-          <td>-0.075473</td>
+          <td>2020-02-01 03:50:00</td>
+          <td>0.019437</td>
+          <td>0.001519</td>
+          <td>0.391987</td>
         </tr>
       </tbody>
     </table>
     </div>
-
 
 
 View the calculated evaporation,
