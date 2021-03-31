@@ -156,7 +156,7 @@ class Aero(object):
         )
         if np.isnan(check).any():
             #print('One or more variables missing on {}'.format(datetime))
-            return np.nan, np.nan, np.nan
+            return np.nan, np.nan, np.nan, np.nan
 
         ###########################################################
         #Constants
