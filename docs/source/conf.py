@@ -20,7 +20,7 @@ autodoc_mock_imports = ["numpy", "pandas"]
 # -- Project information -----------------------------------------------------
 
 project = 'AeroEvap'
-copyright = '2019, Chris Pearson and John Volk'
+copyright = '2019-2021, Chris Pearson and John Volk'
 author = 'Chris Pearson and John Volk'
 
 # The short X.Y version

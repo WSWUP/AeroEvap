@@ -72,16 +72,16 @@ Make a datetime index and clean up the dataframe.
 
 .. raw:: html
 
-     <div>
+    <div>
     <style scoped>
         .dataframe tbody tr th:only-of-type {
             vertical-align: middle;
         }
-
+    
         .dataframe tbody tr th {
             vertical-align: top;
         }
-
+    
         .dataframe thead th {
             text-align: right;
         }
@@ -123,82 +123,82 @@ Make a datetime index and clean up the dataframe.
       </thead>
       <tbody>
         <tr>
-          <td>2020-01-31 23:50:00</td>
-          <td>359</td>
-          <td>10.1</td>
-          <td>11.8</td>
-          <td>1.80</td>
-          <td>8.33</td>
-          <td>5.01</td>
-          <td>101.0</td>
-          <td>1016.8</td>
-          <td>11.0</td>
-          <td>13.9</td>
-          <td>10.4</td>
+          <td>2021-01-31 23:50:00</td>
+          <td>207</td>
+          <td>7.0</td>
+          <td>8.3</td>
+          <td>1.52</td>
+          <td>5.88</td>
+          <td>4.90</td>
+          <td>162</td>
+          <td>1009.1</td>
+          <td>15.9</td>
+          <td>13.6</td>
+          <td>14.3</td>
           <td>99.0</td>
           <td>99.0</td>
         </tr>
         <tr>
-          <td>2020-02-01 00:50:00</td>
-          <td>349</td>
-          <td>8.1</td>
-          <td>9.6</td>
-          <td>1.68</td>
-          <td>5.56</td>
-          <td>4.99</td>
-          <td>69.0</td>
-          <td>1017.6</td>
-          <td>10.6</td>
-          <td>13.9</td>
-          <td>10.0</td>
-          <td>99.0</td>
-          <td>99.0</td>
-        </tr>
-        <tr>
-          <td>2020-02-01 01:50:00</td>
-          <td>13</td>
-          <td>8.5</td>
-          <td>10.1</td>
-          <td>1.61</td>
-          <td>7.69</td>
-          <td>5.10</td>
-          <td>105.0</td>
-          <td>1016.4</td>
-          <td>10.1</td>
-          <td>14.0</td>
-          <td>9.5</td>
-          <td>99.0</td>
-          <td>99.0</td>
-        </tr>
-        <tr>
-          <td>2020-02-01 02:50:00</td>
-          <td>24</td>
-          <td>7.8</td>
-          <td>9.1</td>
-          <td>1.68</td>
-          <td>7.14</td>
-          <td>5.17</td>
-          <td>103.0</td>
-          <td>1015.8</td>
-          <td>10.1</td>
-          <td>14.1</td>
-          <td>9.5</td>
-          <td>99.0</td>
-          <td>99.0</td>
-        </tr>
-        <tr>
-          <td>2020-02-01 03:50:00</td>
-          <td>35</td>
-          <td>7.1</td>
-          <td>9.0</td>
-          <td>1.59</td>
+          <td>2021-02-01 00:50:00</td>
+          <td>208</td>
+          <td>8.0</td>
+          <td>9.9</td>
+          <td>1.38</td>
           <td>6.67</td>
-          <td>5.13</td>
-          <td>103.0</td>
-          <td>1015.6</td>
-          <td>10.6</td>
-          <td>14.2</td>
-          <td>10.0</td>
+          <td>4.91</td>
+          <td>143</td>
+          <td>1008.6</td>
+          <td>15.7</td>
+          <td>13.6</td>
+          <td>14.3</td>
+          <td>99.0</td>
+          <td>99.0</td>
+        </tr>
+        <tr>
+          <td>2021-02-01 01:50:00</td>
+          <td>216</td>
+          <td>10.3</td>
+          <td>11.8</td>
+          <td>1.58</td>
+          <td>6.25</td>
+          <td>4.79</td>
+          <td>157</td>
+          <td>1007.8</td>
+          <td>17.2</td>
+          <td>13.7</td>
+          <td>15.7</td>
+          <td>99.0</td>
+          <td>99.0</td>
+        </tr>
+        <tr>
+          <td>2021-02-01 02:50:00</td>
+          <td>273</td>
+          <td>8.5</td>
+          <td>11.6</td>
+          <td>1.55</td>
+          <td>5.88</td>
+          <td>5.01</td>
+          <td>151</td>
+          <td>1008.3</td>
+          <td>15.9</td>
+          <td>13.7</td>
+          <td>15.0</td>
+          <td>99.0</td>
+          <td>99.0</td>
+        </tr>
+        <tr>
+          <td>2021-02-01 03:50:00</td>
+          <td>320</td>
+          <td>2.5</td>
+          <td>3.5</td>
+          <td>1.45</td>
+          <td>6.67</td>
+          <td>5.43</td>
+          <td>140</td>
+          <td>1008.5</td>
+          <td>14.6</td>
+          <td>13.7</td>
+          <td>14.6</td>
           <td>99.0</td>
           <td>99.0</td>
         </tr>
@@ -266,11 +266,11 @@ later, e.g.
         .dataframe tbody tr th:only-of-type {
             vertical-align: middle;
         }
-
+    
         .dataframe tbody tr th {
             vertical-align: top;
         }
-
+    
         .dataframe thead th {
             text-align: right;
         }
@@ -318,99 +318,99 @@ later, e.g.
       </thead>
       <tbody>
         <tr>
-          <td>2020-01-31 23:50:00</td>
-          <td>359</td>
-          <td>10.1</td>
-          <td>11.8</td>
-          <td>1.80</td>
-          <td>8.33</td>
-          <td>5.01</td>
-          <td>101.0</td>
-          <td>1016.8</td>
-          <td>11.0</td>
-          <td>13.9</td>
-          <td>10.4</td>
+          <td>2021-01-31 23:50:00</td>
+          <td>207</td>
+          <td>7.0</td>
+          <td>8.3</td>
+          <td>1.52</td>
+          <td>5.88</td>
+          <td>4.90</td>
+          <td>162</td>
+          <td>1009.1</td>
+          <td>15.9</td>
+          <td>13.6</td>
+          <td>14.3</td>
           <td>99.0</td>
           <td>99.0</td>
-          <td>1.279457</td>
-          <td>1.332185</td>
-          <td>96.042019</td>
+          <td>1.658512</td>
+          <td>1.841077</td>
+          <td>90.083807</td>
         </tr>
         <tr>
-          <td>2020-02-01 00:50:00</td>
-          <td>349</td>
-          <td>8.1</td>
-          <td>9.6</td>
-          <td>1.68</td>
-          <td>5.56</td>
-          <td>4.99</td>
-          <td>69.0</td>
-          <td>1017.6</td>
-          <td>10.6</td>
-          <td>13.9</td>
-          <td>10.0</td>
-          <td>99.0</td>
-          <td>99.0</td>
-          <td>1.245352</td>
-          <td>1.296822</td>
-          <td>96.031065</td>
-        </tr>
-        <tr>
-          <td>2020-02-01 01:50:00</td>
-          <td>13</td>
-          <td>8.5</td>
-          <td>10.1</td>
-          <td>1.61</td>
-          <td>7.69</td>
-          <td>5.10</td>
-          <td>105.0</td>
-          <td>1016.4</td>
-          <td>10.1</td>
-          <td>14.0</td>
-          <td>9.5</td>
-          <td>99.0</td>
-          <td>99.0</td>
-          <td>1.203866</td>
-          <td>1.253801</td>
-          <td>96.017309</td>
-        </tr>
-        <tr>
-          <td>2020-02-01 02:50:00</td>
-          <td>24</td>
-          <td>7.8</td>
-          <td>9.1</td>
-          <td>1.68</td>
-          <td>7.14</td>
-          <td>5.17</td>
-          <td>103.0</td>
-          <td>1015.8</td>
-          <td>10.1</td>
-          <td>14.1</td>
-          <td>9.5</td>
-          <td>99.0</td>
-          <td>99.0</td>
-          <td>1.203866</td>
-          <td>1.253801</td>
-          <td>96.017309</td>
-        </tr>
-        <tr>
-          <td>2020-02-01 03:50:00</td>
-          <td>35</td>
-          <td>7.1</td>
-          <td>9.0</td>
-          <td>1.59</td>
+          <td>2021-02-01 00:50:00</td>
+          <td>208</td>
+          <td>8.0</td>
+          <td>9.9</td>
+          <td>1.38</td>
           <td>6.67</td>
-          <td>5.13</td>
-          <td>103.0</td>
-          <td>1015.6</td>
-          <td>10.6</td>
-          <td>14.2</td>
-          <td>10.0</td>
+          <td>4.91</td>
+          <td>143</td>
+          <td>1008.6</td>
+          <td>15.7</td>
+          <td>13.6</td>
+          <td>14.3</td>
           <td>99.0</td>
           <td>99.0</td>
-          <td>1.245352</td>
-          <td>1.296822</td>
-          <td>96.031065</td>
+          <td>1.658512</td>
+          <td>1.817315</td>
+          <td>91.261670</td>
+        </tr>
+        <tr>
+          <td>2021-02-01 01:50:00</td>
+          <td>216</td>
+          <td>10.3</td>
+          <td>11.8</td>
+          <td>1.58</td>
+          <td>6.25</td>
+          <td>4.79</td>
+          <td>157</td>
+          <td>1007.8</td>
+          <td>17.2</td>
+          <td>13.7</td>
+          <td>15.7</td>
+          <td>99.0</td>
+          <td>99.0</td>
+          <td>1.817315</td>
+          <td>2.002412</td>
+          <td>90.756312</td>
+        </tr>
+        <tr>
+          <td>2021-02-01 02:50:00</td>
+          <td>273</td>
+          <td>8.5</td>
+          <td>11.6</td>
+          <td>1.55</td>
+          <td>5.88</td>
+          <td>5.01</td>
+          <td>151</td>
+          <td>1008.3</td>
+          <td>15.9</td>
+          <td>13.7</td>
+          <td>15.0</td>
+          <td>99.0</td>
+          <td>99.0</td>
+          <td>1.736292</td>
+          <td>1.841077</td>
+          <td>94.308483</td>
+        </tr>
+        <tr>
+          <td>2021-02-01 03:50:00</td>
+          <td>320</td>
+          <td>2.5</td>
+          <td>3.5</td>
+          <td>1.45</td>
+          <td>6.67</td>
+          <td>5.43</td>
+          <td>140</td>
+          <td>1008.5</td>
+          <td>14.6</td>
+          <td>13.7</td>
+          <td>14.6</td>
+          <td>99.0</td>
+          <td>99.0</td>
+          <td>1.691456</td>
+          <td>1.691456</td>
+          <td>100.000000</td>
         </tr>
       </tbody>
     </table>
@@ -507,11 +507,9 @@ will attempt to use half of the available processors.
     >>> A = Aero(met_df)
     >>> A.run(sensor_height=4, timestep=600, variable_names=names)
 
-After the calculations are complete three new time series will be added to the
-:attr:`.Aero.df` dataframe: ‘E’, ‘Ce’, and ‘VPD’ which are open-water evaporation (mm/timestep), bulk transfer coefficient, and vapor pressure deficit
-(kPa).
+After the calculations are complete three variables will be added to the :attr:`.Aero.df` dataframe: 'E', 'Ce', 'VPD', and 'stability' which are evaporation in mm/timestep, bulk transfer coefficient, vapor pressure deficit (kPa), and the Monin-Obhukov Similarity Theory (MOST) stability parameter (z/L). 
 
-    >>> A.df[['E', 'Ce', 'VPD']].head()
+    >>> A.df[['E', 'Ce', 'VPD', 'stability']].head()
 
 .. raw:: html
 
@@ -536,9 +534,11 @@ After the calculations are complete three new time series will be added to the
           <th>E</th>
           <th>Ce</th>
           <th>VPD</th>
+          <th>stability</th>
         </tr>
         <tr>
           <th>date</th>
+          <th></th>
           <th></th>
           <th></th>
           <th></th>
@@ -546,34 +546,39 @@ After the calculations are complete three new time series will be added to the
       </thead>
       <tbody>
         <tr>
-          <td>2020-01-31 23:50:00</td>
-          <td>0.023573</td>
-          <td>0.001552</td>
-          <td>0.327503</td>
+          <td>2021-01-31 23:50:00</td>
+          <td>-0.002865</td>
+          <td>0.001296</td>
+          <td>-0.069970</td>
+          <td>0.075544</td>
         </tr>
         <tr>
-          <td>2020-02-01 00:50:00</td>
-          <td>0.020519</td>
-          <td>0.001527</td>
-          <td>0.360776</td>
+          <td>2021-02-01 00:50:00</td>
+          <td>-0.003473</td>
+          <td>0.001368</td>
+          <td>-0.070289</td>
+          <td>0.048386</td>
         </tr>
         <tr>
-          <td>2020-02-01 01:50:00</td>
-          <td>0.024901</td>
-          <td>0.001545</td>
-          <td>0.411624</td>
+          <td>2021-02-01 01:50:00</td>
+          <td>-0.014245</td>
+          <td>0.001443</td>
+          <td>-0.213278</td>
+          <td>0.042489</td>
         </tr>
         <tr>
-          <td>2020-02-01 02:50:00</td>
-          <td>0.023312</td>
-          <td>0.001538</td>
-          <td>0.422028</td>
+          <td>2021-02-01 02:50:00</td>
+          <td>-0.007264</td>
+          <td>0.001391</td>
+          <td>-0.136129</td>
+          <td>0.043363</td>
         </tr>
         <tr>
-          <td>2020-02-01 03:50:00</td>
-          <td>0.019437</td>
-          <td>0.001519</td>
-          <td>0.391987</td>
+          <td>2021-02-01 03:50:00</td>
+          <td>-0.000994</td>
+          <td>0.000932</td>
+          <td>-0.094175</td>
+          <td>0.367295</td>
         </tr>
       </tbody>
     </table>
@@ -602,14 +607,29 @@ daily sum.
 
 And the wind speed relation versus the calculated evaporation.
 
-
     >>> plt.figure(figsize=(8,4))
     >>> plt.scatter(A.df.WSPD.resample('D').mean(), A.df.E.resample('D').sum())
     >>> plt.ylabel('evaporation mm/day')
     >>> plt.xlabel('mean daily wind speed m/s')
-
-
+    
 .. figure:: _static/wind_vs_evap.png
+
+We can use the MOST stability parameter for relating the wind speed to the bulk transfer coefficient as well by classifying them by unstable, stable, and neutral conditions.
+
+    >>> stable = np.real(A.df.stability) > 0 
+    >>> unstable = np.real(A.df.stability) < 0
+    >>> neutral = np.real(A.df.stability) == 0
+
+    >>> plt.figure(figsize=(8,6))
+    >>> plt.scatter(A.df.WSPD[stable], A.df.Ce[stable], marker='x', color='blue', label='stable')
+    >>> plt.scatter(A.df.WSPD[unstable], A.df.Ce[unstable], marker='x', color='red', label='unstable')
+    >>> plt.scatter(A.df.WSPD[neutral], A.df.Ce[neutral], marker='o', color='black', label='neutral')
+    >>> plt.ylim(0,0.006)
+    >>> plt.ylabel(r'$C_e$', fontsize=12)
+    >>> plt.xlabel('Wind speed m/s')
+    >>> plt.legend()
+
+.. figure:: _static/wind_vs_Ce.png
 
 
 Single calculation
@@ -620,7 +640,7 @@ be used on a single set of meterological data to calculate the
 instantaneous open-water evaporation. It requires the same inputs as
 :meth:`.Aero.run` however the inputs are scalars as opposed to time series.
 For example using the first timestamp of our example buoy data we can
-calculate E, Ce, and VPD:
+calculate E, Ce, VPD, and stability:
 
     >>> datetime = '2019-08-01 00:00:00'
     >>> wind = 3.3
@@ -630,7 +650,7 @@ calculate E, Ce, and VPD:
     >>> RH = 80.26
     >>> sensor_height = 4
     >>> timestep = 600
-    >>> E, Ce, VPD = Aero.single_calc(
+    >>> E, Ce, VPD, stability = Aero.single_calc(
     >>>     datetime,
     >>>     wind,
     >>>     pressure,
@@ -641,8 +661,8 @@ calculate E, Ce, and VPD:
     >>>     timestep
     >>> )
 
-    >>> E, Ce, VPD
-        (0.008724959939647368, 0.001310850807452679, 0.44947250457458576)
+    >>> E, Ce, VPD, stability
+        (0.008724959939647368, 0.001310850807452679, 0.44947250457458576, -0.049355020952319244)
 
 Theory behind calculations
 --------------------------

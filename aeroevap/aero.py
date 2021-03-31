@@ -106,7 +106,7 @@ class Aero(object):
         pool.join()
 
         results_df = pd.concat(results)
-        output_vars = ['E', 'Ce', 'VPD']
+        output_vars = ['E', 'Ce', 'VPD', 'stability']
         self._df[output_vars] = results_df[output_vars]
         for el in ['date', 'SH', 'dt']:
             if el in self._df:
@@ -146,7 +146,7 @@ class Aero(object):
             timestep (int or float): measurement frequency in seconds
 
         Returns (tuple): 
-            evaporation (mm/timestep), bulk transfer coefficient (Ce), and vapor pressure deficit (kPa)
+            evaporation (mm/timestep), bulk transfer coefficient (Ce), vapor pressure deficit (kPa), and MOST stability (z/L)
 
         
         """
@@ -258,12 +258,12 @@ class Aero(object):
             )
             return np.nan, np.nan, np.nan
 
-        stability=z/L
+        stability_s = z/L
 
         if ~np.isreal(L):
             Ce_s=np.nan
         else:
-            if np.real(stability)>0:
+            if np.real(stability_s) > 0:
                 Ce_s=np.real(K**2/((cm.log(z/zo)-Sm)*(cm.log(z/zoq)-Sq)))
             else:
                 Ce_s=np.nan
@@ -322,11 +322,11 @@ class Aero(object):
                 )
             )
         
-        stability=z/L
+        stability_u = z/L
         if ~np.isreal(L):
             Ce_u=np.nan
         else:
-            if np.real(stability)<0:
+            if np.real(stability_u) < 0:
                 Ce_u=np.real(K**2/((cm.log(z/zo)-Sm)*(cm.log(z/zoq)-Sq)))
             else:
                 Ce_u=np.nan
@@ -361,16 +361,19 @@ class Aero(object):
         
         if cm.isfinite(Ce_s):
             Ce=Ce_s
+            stability = stability_s
         else:
             if cm.isfinite(Ce_u):
                 Ce=Ce_u
+                stability = stability_u
             else:
                 Ce=Ce_n
+                stability = 0
         ################################################################
         #Calculated evaporation in mm/timestep
         E=density_air*Ce*(q_sat-q_air)*wind*timestep
 
-        return E, Ce, VPD
+        return E, Ce, VPD, np.real(stability)
         
     
 def _calc(input_list):
@@ -389,7 +392,7 @@ def _calc(input_list):
     """
     date = input_list[0]
     return pd.DataFrame(
-        index=[date], columns=['E', 'Ce', 'VPD'], data=[
+        index=[date], columns=['E', 'Ce', 'VPD', 'stability'], data=[
             Aero.single_calc(
                 date, input_list[1], input_list[2], input_list[3], 
                 input_list[4], input_list[5],input_list[6],input_list[7]
