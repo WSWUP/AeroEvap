@@ -9,7 +9,8 @@ with io.open("aeroevap/__init__.py", "rt", encoding="utf8") as f:
 
 requires = [
     'numpy',
-    'pandas'
+    'pandas',
+    'matplotlib'
 ]
 
 tests_require = ['pytest']
