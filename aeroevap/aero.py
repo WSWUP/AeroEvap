@@ -96,6 +96,8 @@ class Aero(object):
             )
             return
  
+        numeric_vars = ['WS', 'P', 'T_air', 'T_skin', 'RH', 'SH']
+        df[numeric_vars] = df[numeric_vars].astype(float)
         # run each input using n processors
         inputs = df[input_vars].values.tolist()
         if not nproc:
@@ -150,11 +152,10 @@ class Aero(object):
 
         
         """
-       
         check=np.array(
-            [wind, pressure, T_air, T_skin, RH, sensor_height, timestep]
-        )
-        if np.isnan(check).any():
+            [wind, pressure, T_air, T_skin, RH, sensor_height]
+        ).astype(float)
+        if np.isnan(check).any() or np.isnan(timestep):
             #print('One or more variables missing on {}'.format(datetime))
             return np.nan, np.nan, np.nan, np.nan
 
