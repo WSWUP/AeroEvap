@@ -148,9 +148,12 @@ intersphinx_mapping = {
     'pandas': ('http://pandas.pydata.org/pandas-docs/stable', None),
 }
 
-# toggle on code blocks to remove prompt ">>> "
-def setup(app):
-    app.add_javascript('copybutton.js')
-    app.add_stylesheet('custom.css')
-    app.add_javascript("custom.js")
-    app.add_javascript("https://cdn.jsdelivr.net/npm/clipboard@1/dist/clipboard.min.js")
+html_css_files = [
+    'custom.css',
+]
+html_js_files = [
+    'copybutton.js',
+    'custom.js',
+    'https://cdn.jsdelivr.net/npm/clipboard@1/dist/clipboard.min.js'
+]
+
